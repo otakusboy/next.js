@@ -9,9 +9,9 @@
 //! The blocks are stored in a [`SmallVec`], which keeps up to `INLINE` blocks inline without a heap
 //! allocation (see [`Bitset`]). The default, `Bitset<0>`, always stores its blocks on the heap.
 //!
-//! Compared to a `RoaringBitmap`, which is optimized for compact storage, every operation is a
-//! simple loop over machine words. That makes unions and subset checks fast when the bits span a
-//! limited range, at the cost of using one bit of memory per index in that range.
+//! Every operation is a simple loop over machine words. That makes unions and subset checks fast
+//! when the bits span a limited range, at the cost of using one bit of memory per index in that
+//! range.
 //!
 //! The bincode encoding (see the `encode` module) stores either the trimmed bytes of the range or,
 //! if that is clearly smaller, the delta-encoded list of bits, so sparse sets stay compact when
